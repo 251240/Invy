@@ -90,16 +90,16 @@ class Server:
         with sqlite3.connect(self.db_name) as conn:
             conn.execute(f"""
                 CREATE TABLE IF NOT EXISTS produkty_{id_klienta} (
-                    id_produktu INTEGER PRIMARY KEY AUTOINCREMENT,
+                    id_produktu INTEGER,
                     nazwa TEXT,
                     zdjecie TEXT,
                     cena INTEGER,
                     jednostka_sprzedazy TEXT,
                     ilosc INTEGER,
                     jednostka_ilosci TEXT,
-                    dzial TEXT,
-                    regal TEXT,
-                    polka TEXT
+                    dzial INTEGER,
+                    regal INTEGER,
+                    polka INTEGER
                 )
             """)
 
@@ -118,9 +118,12 @@ class Server:
             for p in products:
                 cur.execute(f"""
                     INSERT INTO produkty_{id_klienta}
-                    (nazwa, zdjecie, cena, jednostka_sprzedazy, ilosc, jednostka_ilosci, dzial, regal, polka)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    (id_produktu, nazwa, zdjecie, cena,
+                     jednostka_sprzedazy, ilosc, jednostka_ilosci,
+                     dzial, regal, polka)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """, (
+                    p.get("id_produktu"),
                     p.get("nazwa"),
                     p.get("zdjecie"),
                     p.get("cena"),

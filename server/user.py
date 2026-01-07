@@ -78,26 +78,28 @@ def main():
     user.login_user()
 
     user.produkty.append({
+        "id_produktu": 1,
         "nazwa": "Mleko 3.2%",
         "zdjecie": "mleko.png",
         "cena": 4,
         "jednostka_sprzedazy": "zl",
         "ilosc": 3,
         "jednostka_ilosci": "l",
-        "dzial": "nabial",
-        "regal": "B",
-        "polka": "2"
+        "dzial": 1,
+        "regal": 1,
+        "polka": 1
     })
     user.produkty.append({
+        "id_produktu": 2,
         "nazwa": "Pomidor",
         "zdjecie": "./Images/pomidor.png",
         "cena": 2,
         "jednostka_sprzedazy": "zl",
         "ilosc": 100,
         "jednostka_ilosci": "kg",
-        "dzial": "warzywa",
-        "regal": "A",
-        "polka": "1"
+        "dzial": 1,
+        "regal": 2,
+        "polka": 1
     })
 
 
